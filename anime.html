@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>أنيميشن غمشة</title>
+  <style>
+   <style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff0f6;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>
+  </style>
+</head>
+<body>
+
+  <img id="animation" src="blink1.png" alt="animation frame">
+
+  <button onclick="document.getElementById('sound2').play()">تشغيل الصوت 2</button>
+
+<audio id="sound2" src="blink5.mp3" preload="auto"></audio>
+  <audio id="blinkSound" src="blink4.mp3" preload="auto"></audio>
+  <audio id="blinkSound" src="blink5.mp3" preload="auto"></audio>
+  
+<script>
+  const frames = [
+    "blink1.png",
+    "blink2.png",
+    "blink3.png",
+    "blink4.png",
+    "blink5.png",
+    "blink6.png",
+    "blink7.png",
+    "blink8.png",
+    "blink9.png",
+    "blink10.png",
+    "blink11.png",
+    "blink12.png",
+    "blink13.png",
+    "blink14.png",
+    "blink15.png",
+    "blink16.png",
+    "blink17.png",
+    "blink18.png",
+    "blink19.png",
+    "blink20.png"
+  ];
+
+  let currentFrame = 0;
+  const img = document.getElementById("animation");
+  const sound = document.getElementById("blinkSound"); // ✅ جلب عنصر الصوت
+
+  function playAnimation() {
+    // ✅ شغّل الصوت أول ما تبدأ الحركة
+    sound.currentTime = 0;
+    sound.play().catch(e => {
+      console.log("لم يتم تشغيل الصوت:", e);
+    });
+
+    const interval = setInterval(() => {
+      img.src = frames[currentFrame];
+      currentFrame++;
+
+      if (currentFrame >= frames.length) {
+        clearInterval(interval);
+        currentFrame = 0;
+      }
+    }, 300); // سرعة تغيير الصور
+  }
+
+  // شغّل الحركة كل 5 ثواني
+  setInterval(playAnimation, 5000);
+</script>
+
+</body>
+</html>

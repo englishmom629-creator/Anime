@@ -1,0 +1,5 @@
+.character {
+  will-change: transform;
+  transition: transform 1s ease;
+}
+
